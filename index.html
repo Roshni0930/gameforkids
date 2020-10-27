@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- html code for player1 -->
+    <div id="player1section">
+        <div id="punch1">
+            <img src="img/hit.png" style="height: 200px; " onclick="player1Hit();"  >
+        </div> 
+       
+        <div id="player1healthbar">
+            <div id="mybar1">
+                <span id="player1_value_bar">100%</span>
+    
+            </div>
+        </div>
+        
+        <div id="superimg1">  
+            <img src="img/superhit.png" style="height: 200px;">
+        </div> 
+        <div class="superbtns">
+            <button id="superhitbtn1" type="button" >Super Hit</button>
+        </div>   
+
+    </div>
+
+    <!-- html code for player2 -->
+    <div id="player2section">
+        <div id="punch2">
+            <img src="img/hit.png" style="height: 200px;" onclick="player2Hit();">
+        </div> 
+        
+        <div id="player1healthbar">
+            <div id="mybar2">
+                <span id="player2_value_bar">100%</span>
+            </div>
+        </div>
+
+        <div id="superimg2"> 
+            <img src="img/superhit.png" style="height: 200px;">
+        </div>
+
+        <div class="superbtns">
+            <button id="superhitbtn2" type="button" >Super Hit</button>
+        </div> 
+        
+    </div>
+    <script>
+         
+        var Player_1_health=100;
+        var Player_2_health=100;
+        var counter_inc_player1Hit=0;
+        var counter_inc_player2Hit=0;
+        document.getElementById("superhitbtn1").disabled=true;
+        document.getElementById("superhitbtn1").addEventListener("click", player1SuperHit);
+        document.getElementById("superhitbtn2").disabled=true;
+        document.getElementById("superhitbtn2").addEventListener("click", player2SuperHit);
+        document.getElementsByTagName("body")[0].addEventListener("keypress", keybinding);
+        
+         // functions for player1 
+        function player1Hit(){
+            counter_inc_player1Hit=counter_inc_player1Hit+1;
+            if (counter_inc_player1Hit>=5){
+                const ct=document.querySelector("#superhitbtn1");
+                ct.disabled=false;
+            } 
+            else{
+                counter_inc_player2Hit=0;
+            }
+            var elem=document.getElementById("mybar2");
+            Player_2_health=Player_2_health-1;
+            elem.style.width=Player_2_health + "%";
+            
+            document.getElementById("player2_value_bar").innerHTML=Player_2_health+ "%";
+            //document.getElementById("sb2").innerHTML=Player_2_health;//
+            if(Player_2_health<=0){
+                document.getElementById("player2_value_bar").innerHTML="Gameover";
+                //document.getElementById("sb2").innerHTML="Gameover";//
+            }
+        }
+       
+      
+        
+        
+
+        function player1SuperHit() {
+            var superHit1 = document.getElementById("superhitbtn1")
+            if(superHit1.disabled == true) {
+                return
+            }
+            superHit1.disabled=true;
+            
+            var elem=document.getElementById("mybar2");
+            Player_2_health=Player_2_health-5;
+            elem.style.width=Player_2_health + "%";
+            
+            document.getElementById("player2_value_bar").innerHTML=Player_2_health+ "%";
+            document.getElementById("superhitbtn1").disabled=true;
+            counter_inc_player1Hit=0;
+            counter_inc_player2Hit=0;
+            if(Player_2_health<=0){
+                document.getElementById("player2_value_bar").innerHTML="Gameover";
+               
+            }
+        }
+       
+        
+
+        // keybinding function for both player
+ 
+       
+        function keybinding(e){
+            if(e.key.toLowerCase() == 'h') {
+                player1SuperHit()
+                document.getElementById("superhitbtn1").disabled=true;
+            }
+            if(e.key.toLowerCase() == 'l') {
+                player2SuperHit()
+                document.getElementById("superhitbtn2").disabled=true;
+            }
+            if(e.key.toLowerCase() == 'j') {
+                player1Hit()
+            }
+            if(e.key.toLowerCase() == 'k') {
+                player2Hit()
+            }              
+
+        }
+
+        // functions for player2
+        
+        function player2Hit(){
+            counter_inc_player2Hit=counter_inc_player2Hit+1;
+            if (counter_inc_player2Hit>=5){
+                const bt=document.querySelector("#superhitbtn2");
+                bt.disabled=false;
+                
+            } else{
+                counter_inc_player1Hit=0;
+            }
+            var elem=document.getElementById("mybar1");
+            Player_1_health=Player_1_health-1;
+            elem.style.width=Player_1_health + "%";
+            
+            document.getElementById("player1_value_bar").innerHTML=Player_1_health+ "%";
+            //document.getElementById("sb1").innerHTML=Player_1_health;//
+            if(Player_1_health<=0){
+                document.getElementById("player1_value_bar").innerHTML="Gameover"
+                //document.getElementById("sb1").innerHTML="Gameover";//
+            }
+            
+        }            
+       
+      
+
+        function player2SuperHit() {
+            var superHit2 = document.getElementById("superhitbtn2")
+            if(superHit2.disabled == true) {
+                return
+            }
+            superHit2.disabled=true;
+            var elem=document.getElementById("mybar1");
+            Player_1_health=Player_1_health-5;
+            elem.style.width=Player_1_health + "%";
+            
+            document.getElementById("player1_value_bar").innerHTML=Player_1_health+ "%";
+            document.getElementById("superhitbtn2").disabled=true;
+         
+            counter_inc_player2Hit=0;
+            counter_inc_player1Hit=0;
+            if(Player_1_health<=0){
+                 document.getElementById("player1_value_bar").innerHTML="Gameover"
+              
+            }
+            
+           
+        }
+        
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.maindiv{
+    width: 100%;
+    height: 655px;
+    
+}
+#player1section{
+    width: 50%;
+    height: 655px;
+    background-color: aqua;
+    float: left;
+}
+#player1healthbar{
+    width: 80%;
+    background: rgb(206, 194, 194);
+    margin: auto;
+}
+#mybar1{
+    width: 100%;
+    background:black;
+    color: white;
+    text-align: center;
+    transition-property: width;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-delay: 0s
+}
+#player2healthbar{
+    width: 80%;
+    background: rgb(206, 194, 194);
+    margin: auto;
+}
+#mybar2{
+    width: 100%;
+    background:black;
+    color: white;
+    text-align: center;
+    transition-property: width;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-delay: 0s
+}
+#player2section{
+    width: 50%;
+    height: 655px;
+    background-color: rgb(125, 171, 189);
+    float: right;
+}
+
+#punch1 img{
+    margin-left: 200px;
+}
+#superhitbtn1{
+    margin-top: 50px;
+}
+#superimg1{
+    margin-top: 40px;
+}
+#superimg1 img{
+    margin-left: 200px;
+}
+#punch2 img{
+    margin-left:200px ;
+}
+#superhitbtn2{
+    margin-top: 50px;
+}
+#superimg2{
+    margin-top: 40px;
+}
+#superimg2 img{
+    margin-left:200px ;
+}
+
+#sb1{
+    margin-top: 80px;
+}
+#sb2{
+    margin-top: 80px;
+}
+.superbtns{
+    margin-left: 250px;
+}
+#superhitbtn1{
+    width: 80px;
+    height: 30px;
+
+}
+#superhitbtn2{
+    width: 80px;
+    height: 30px;
+
+}
+
+
